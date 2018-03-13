@@ -1,0 +1,2 @@
+# WebServiceDataProvider
+一个用于动态调用WebService的C#类库
