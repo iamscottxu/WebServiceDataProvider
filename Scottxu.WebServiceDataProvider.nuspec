@@ -1,14 +1,17 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
+    <title>Scottxu.WebServiceDataProvider</title>
     <!-- 包的id，在托管库内必须唯一 -->
     <id>Scottxu.WebServiceDataProvider</id>
 
     <!-- 解析依赖项时使用的包版本号 -->
-    <version>1.0.0</version>
+    <version>1.0.1</version>
+
+    <summary>WebServiceDataProvider是一个用于动态调用WebService的C#类库，这个类库非常灵活，不经可以仅通过两三条语句来调用WebService提供的方法，还可以使用动态编译的代码来调用这些方法。你无需在编译前添加好WebService的引用，只用添加这个类库，你就可以在需要时轻松使用WebService提供的服务。</summary>
 
     <!-- 在库中显示的作者 -->
-    <authors>Scott Xu(xyc0714@aliyun.com)</authors>
+    <authors>Scott Xu</authors>
 
     <!-- 库的拥有者，便于用户能够轻松的获取到该拥有者发布的其他的包  -->
     <owners>scottxu</owners>
