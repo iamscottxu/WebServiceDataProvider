@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <!-- 包的id，在托管库内必须唯一 -->
+    <id>Scottxu.WebServiceDataProvider</id>
+
+    <!-- 解析依赖项时使用的包版本号 -->
+    <version>1.0.0</version>
+
+    <!-- 在库中显示的作者 -->
+    <authors>Scott Xu(xyc0714@aliyun.com)</authors>
+
+    <!-- 库的拥有者，便于用户能够轻松的获取到该拥有者发布的其他的包  -->
+    <owners>scottxu</owners>
+
+    <!-- 项目的许可和地址（比如将源代码发布到Github上时可以在此填写许可和） -->
+    <licenseUrl>https://github.com/iamscottxu/WebServiceDataProvider/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/iamscottxu/WebServiceDataProvider</projectUrl>
+
+    <!-- 在用户安装包的时候是否提示接受许可信息 -->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+    <!-- 包的描述信息 -->
+    <description>一个用于动态调用WebService的C#类库</description>
+
+    <!-- 版权 -->
+    <copyright>Copyright (c) 2018 Scott Xu</copyright>
+
+    <!-- 标签，用户可通过标签进行搜索 -->
+    <tags>webservice</tags>
+
+    <!-- 包的依赖关系，在安装包的时候会自动安装所有依赖 -->
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="9.0" />
+    </dependencies>
+    </metadata>
+
+    <!-- 当包安装完成的时候会自动展示readme.txt（包不能是依赖项目） -->
+    <files>
+    <file src="https://github.com/iamscottxu/WebServiceDataProvider/blob/master/README.md" target="" />
+    </files>
+</package>
