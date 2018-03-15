@@ -34,9 +34,4 @@
       <dependency id="Newtonsoft.Json" version="9.0" />
     </dependencies>
     </metadata>
-
-    <!-- 当包安装完成的时候会自动展示readme.txt（包不能是依赖项目） -->
-    <files>
-    <file src="https://github.com/iamscottxu/WebServiceDataProvider/blob/master/README.md" target="" />
-    </files>
 </package>
