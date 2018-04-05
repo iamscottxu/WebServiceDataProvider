@@ -10,49 +10,49 @@ namespace Scottxu.WebServiceDataProvider
     /// </summary>
     public abstract class CommandBase
     {
-        //WebService客户端CodeDOM程序图容器
-        protected CodeCompileUnit CodeCompileUnit;
+        /// <summary>
+        /// WebService客户端CodeDOM程序图容器
+        /// </summary>
+        protected readonly CodeCompileUnit CodeCompileUnit;
 
-        //WebService数据源提供程序的连接实例
-        private Connection _Connection;
-
-        //执行查询
-        abstract public Object Query();
+        /// <summary>
+        /// 从远处服务器查询数据
+        /// </summary>
+        /// <returns>查询结果对象</returns>
+        public abstract object Query();
 
         /// <summary>
         /// 获取此查询基类所使用的WebService数据源提供程序的连接
         /// </summary>
-        public Connection Connection
-        {
-            get
-            {
-                return _Connection;
-            }
-        }
+        public Connection Connection { get; }
 
-        //使用CodeDom编译客户端代理类
+
+        /// <summary>
+        /// 使用CodeDom编译客户端代理类
+        /// </summary>
+        /// <param name="connection">WebService数据源提供程序的连接类的实例</param>
         protected CommandBase(Connection connection)
         {
-            _Connection = connection;
+            Connection = connection;
 
             //如果还没有获取服务说明则先获取服务说明
             if (connection.ServiceDescription == null) connection.LoadServiceDescription();
 
             //创建客户端代理类
-            ServiceDescriptionImporter ServiceDescriptionImporter = new ServiceDescriptionImporter
+            var serviceDescriptionImporter = new ServiceDescriptionImporter
             {
                 ProtocolName = "Soap", // 指定访问协议。
                 Style = ServiceDescriptionImportStyle.Client, // 生成客户端代理
                 CodeGenerationOptions = CodeGenerationOptions.GenerateProperties  //| CodeGenerationOptions.GenerateNewAsync
             };
 
-            ServiceDescriptionImporter.AddServiceDescription(connection.ServiceDescription, null, null); // 添加 WSDL 文档
+            serviceDescriptionImporter.AddServiceDescription(connection.ServiceDescription, null, null); // 添加 WSDL 文档
 
             //使用CodeDom编译客户端代理类
-            CodeNamespace codeNamespace = new CodeNamespace(); // 为代理类添加命名空间，缺省为全局空间
+            var codeNamespace = new CodeNamespace(); // 为代理类添加命名空间，缺省为全局空间
             CodeCompileUnit = new CodeCompileUnit();
             CodeCompileUnit.Namespaces.Add(codeNamespace);
-            ServiceDescriptionImporter.Import(codeNamespace, CodeCompileUnit);
+            serviceDescriptionImporter.Import(codeNamespace, CodeCompileUnit);
         }
     }
 }

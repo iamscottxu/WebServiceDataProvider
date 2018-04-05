@@ -13,21 +13,15 @@ namespace Scottxu.WebServiceDataProvider
     public class CSharpCodeCommand : CommandBase
     {
         //WebServiceObject对象
-        private object WebServiceQueryObject;
+        private readonly object _webServiceQueryObject;
 
         //方法信息
-        private MethodInfo MethodInfo;
+        private readonly MethodInfo _methodInfo;
 
-        //源代码
-        private string _QueryCode;
-
-        public string QueryCode
-        {
-            get
-            {
-                return _QueryCode;
-            }
-        }
+        /// <summary>
+        /// 获取查询所用的代码
+        /// </summary>
+        public string QueryCode { get; }
 
         /// <summary>
         /// 获取或设置此查询所使用的参数
@@ -37,27 +31,28 @@ namespace Scottxu.WebServiceDataProvider
         /// <summary>
         /// 初始化一个使用C#代码的WebService数据源提供程序的查询类的实例
         /// </summary>
-        /// <param name="method"></param>
-        /// <param name="connection"></param>
+        /// <param name="queryCode">查询所用的代码</param>
+        /// <param name="connection">WebService数据源提供程序的连接类的实例</param>
         public CSharpCodeCommand(string queryCode, Connection connection) : base(connection)
         {
-            _QueryCode = queryCode;
+            QueryCode = queryCode;
 
-            CodeDomProvider codeDomProvider = CodeDomProvider.CreateProvider("CSharp");
+            var codeDomProvider = CodeDomProvider.CreateProvider("CSharp");
 
             //生成WebService源代码
-            MemoryStream memoryStream = new MemoryStream();
-            StreamWriter streamWriter = new StreamWriter(memoryStream, new UTF8Encoding());
+            var memoryStream = new MemoryStream();
+            var streamWriter = new StreamWriter(memoryStream, new UTF8Encoding());
             codeDomProvider.GenerateCodeFromCompileUnit(CodeCompileUnit, streamWriter, new CodeGeneratorOptions());
             streamWriter.Flush();
             memoryStream.Position = 0;
-            string webServiceCode = new StreamReader(memoryStream, new UTF8Encoding()).ReadToEnd();
+            var webServiceCode = new StreamReader(memoryStream, new UTF8Encoding()).ReadToEnd();
             streamWriter.Close();
             memoryStream.Close();
 
             //添加模板代码
-            string _queryCode
+            var _queryCode
                 = "using System;"
+                + "using System.Data;"
                 + "using System.Collections.Generic;"
                 + "using System.Linq;"
                 + "using System.Text;"
@@ -70,7 +65,7 @@ namespace Scottxu.WebServiceDataProvider
 
             codeDomProvider = CodeDomProvider.CreateProvider("CSharp");
 
-            CompilerParameters compilerParameters = new CompilerParameters
+            var compilerParameters = new CompilerParameters
             {
                 GenerateExecutable = false,
                 GenerateInMemory = true,
@@ -86,19 +81,18 @@ namespace Scottxu.WebServiceDataProvider
                     "System.Xml.dll",
                     "System.Xml.Linq.dll",
                     "System.Web.Services.dll",
-                    "System.Data.dll",
-                    "Newtonsoft.Json.dll"
+                    "System.Data.dll"
                 }
             };
 
-            CompilerResults CompilerResults = codeDomProvider.CompileAssemblyFromSource(compilerParameters, webServiceCode, _queryCode);
+            var compilerResults = codeDomProvider.CompileAssemblyFromSource(compilerParameters, webServiceCode, _queryCode);
 
             //使用Reflection调用WebService
-            Assembly assembly = CompilerResults.CompiledAssembly;
-            Type type = assembly.GetType("WebServiceQuery"); // 如果在前面为代理类添加了命名空间，此处需要将命名空间添加到类型前面。
+            var assembly = compilerResults.CompiledAssembly;
+            var type = assembly.GetType("WebServiceQuery"); // 如果在前面为代理类添加了命名空间，此处需要将命名空间添加到类型前面。
 
-            WebServiceQueryObject = Activator.CreateInstance(type);
-            MethodInfo = type.GetMethod("Main");
+            _webServiceQueryObject = Activator.CreateInstance(type);
+            _methodInfo = type.GetMethod("Main");
             Parameters = new Dictionary<string, object>();
         }
 
@@ -106,9 +100,9 @@ namespace Scottxu.WebServiceDataProvider
         /// 从远处服务器查询数据
         /// </summary>
         /// <returns>查询结果对象</returns>
-        override public Object Query()
+        public override object Query()
         {
-            return MethodInfo.Invoke(WebServiceQueryObject, new object[] { Parameters });
+            return _methodInfo.Invoke(_webServiceQueryObject, new object[] { Parameters });
         }
     }
 }
