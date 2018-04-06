@@ -6,9 +6,9 @@
     <id>Scottxu.WebServiceDataProvider</id>
 
     <!-- 解析依赖项时使用的包版本号 -->
-    <version>1.0.1</version>
+    <version>2018.4.0</version>
 
-    <summary>WebServiceDataProvider是一个用于动态调用WebService的C#类库，这个类库非常灵活，不经可以仅通过两三条语句来调用WebService提供的方法，还可以使用动态编译的代码来调用这些方法。你无需在编译前添加好WebService的引用，只用添加这个类库，你就可以在需要时轻松使用WebService提供的服务。</summary>
+    <summary>一个用于动态调用WebService的C#类库</summary>
 
     <!-- 在库中显示的作者 -->
     <authors>Scott Xu</authors>
@@ -21,10 +21,10 @@
     <projectUrl>https://github.com/iamscottxu/WebServiceDataProvider</projectUrl>
 
     <!-- 在用户安装包的时候是否提示接受许可信息 -->
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
 
     <!-- 包的描述信息 -->
-    <description>一个用于动态调用WebService的C#类库</description>
+    <description>WebServiceDataProvider是一个用于动态调用WebService的C#类库，使用此类库，不仅可以仅通过两三条语句来调用WebService提供的方法，还可以使用动态编译的代码来调用这些方法。你无需在编译前添加好WebService的引用，只用添加这个类库，你就可以在需要时轻松使用WebService提供的服务。</description>
 
     <!-- 版权 -->
     <copyright>Copyright (c) 2018 Scott Xu</copyright>
@@ -34,7 +34,7 @@
 
     <!-- 包的依赖关系，在安装包的时候会自动安装所有依赖 -->
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="9.0" />
+      <dependency id="Newtonsoft.Json" version="11.0.2" />
     </dependencies>
     </metadata>
 </package>
