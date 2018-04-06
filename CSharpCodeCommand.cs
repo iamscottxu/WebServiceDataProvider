@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using Microsoft.CSharp.RuntimeBinder;
 
 namespace Scottxu.WebServiceDataProvider
 {
@@ -86,6 +87,22 @@ namespace Scottxu.WebServiceDataProvider
             };
 
             var compilerResults = codeDomProvider.CompileAssemblyFromSource(compilerParameters, webServiceCode, _queryCode);
+
+            //包含错误，编译失败
+            if (compilerResults.Errors.HasErrors)
+            {
+                var compilerErrors = compilerResults.Errors;
+                var errorString = Properties.Resources.CompilerErrorText;
+                foreach (CompilerError compilerError in compilerErrors)
+                {
+                    compilerError.Line--;
+                    compilerError.FileName = string.Empty;
+                    errorString +=
+                        $"\n({compilerError.Line},{compilerError.Column}){compilerError.ErrorNumber} " +
+                        $"{(compilerError.IsWarning ? Properties.Resources.WarningText : Properties.Resources.ErrorText)} {compilerError.ErrorText} ";
+                }
+                throw new CompilerException(errorString, compilerErrors); //引发异常
+            }
 
             //使用Reflection调用WebService
             var assembly = compilerResults.CompiledAssembly;

@@ -70,6 +70,24 @@ namespace Scottxu.WebServiceDataProvider.Properties {
         }
         
         /// <summary>
+        ///   查找类似 在编译过程中发生如下错误： 的本地化字符串。
+        /// </summary>
+        internal static string CompilerErrorText {
+            get {
+                return ResourceManager.GetString("CompilerErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 错误 的本地化字符串。
+        /// </summary>
+        internal static string ErrorText {
+            get {
+                return ResourceManager.GetString("ErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 {0}方法\n\n{1}\n\n类：{2}\n    {3}\n\n语法：\n  public {4} {0}({5}) 的本地化字符串。
         /// </summary>
         internal static string GetMethodDocText {
@@ -84,6 +102,15 @@ namespace Scottxu.WebServiceDataProvider.Properties {
         internal static string KeyNotFoundExceptionText {
             get {
                 return ResourceManager.GetString("KeyNotFoundExceptionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 警告 的本地化字符串。
+        /// </summary>
+        internal static string WarningText {
+            get {
+                return ResourceManager.GetString("WarningText", resourceCulture);
             }
         }
     }
