@@ -37,4 +37,7 @@
       <dependency id="Newtonsoft.Json" version="11.0.2" />
     </dependencies>
     </metadata>
+  <files>
+    <file src="..\content\readme.txt" target="" />
+  </files>
 </package>

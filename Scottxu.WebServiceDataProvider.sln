@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scottxu.WebServiceDataProvi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scottxu.WebServiceDataProvider.Demo", "Scottxu.WebServiceDataProvider.Demo\Scottxu.WebServiceDataProvider.Demo.csproj", "{F052DF3E-FBEE-4361-8744-4AAB9AFE9413}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{70A56706-FEBF-41D0-83FA-CC2D7D9CB752}"
+	ProjectSection(SolutionItems) = preProject
+		content\readme.txt = content\readme.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
