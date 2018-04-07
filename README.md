@@ -2,7 +2,7 @@
 [![NuGet](https://img.shields.io/badge/NuGet-Scottxu.WebServiceDataProvider-yellow.svg)](https://www.nuget.org/packages/Scottxu.WebServiceDataProvider/)
 [![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)](https://mit-license.org/)
 
-WebServiceDataProvider是一个用于动态调用WebService的C#类库，这个类库非常灵活，不经可以仅通过两三条语句来调用WebService提供的方法，还可以使用动态编译的代码来调用这些方法。你无需在编译前添加好WebService的引用，只用添加这个类库，你就可以在需要时轻松使用WebService提供的服务。
+WebServiceDataProvider是一个用于动态调用WebService的C#类库，使用此类库，不仅可以仅通过两三条语句来调用WebService提供的方法，还可以使用动态编译的代码来调用这些方法。你无需在编译前添加好WebService的引用，只用添加这个类库，你就可以在需要时轻松使用WebService提供的服务。
 
 ## 依赖
 * Newtonsoft.json >= 11.0.2
