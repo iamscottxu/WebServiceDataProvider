@@ -1,6 +1,6 @@
 ﻿namespace Scottxu.WebServiceDataProvider.Demo
 {
-    partial class FormParameterList
+    partial class FormCodeParameterList
     {
         /// <summary>
         /// Required designer variable.
@@ -28,47 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dataGridViewParameterList = new System.Windows.Forms.DataGridView();
-            this.parameterDictionaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.keysDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valuesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParameterList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.parameterDictionaryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewParameterList
             // 
-            this.dataGridViewParameterList.AutoGenerateColumns = false;
             this.dataGridViewParameterList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewParameterList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.keysDataGridViewTextBoxColumn,
-            this.valuesDataGridViewTextBoxColumn});
-            this.dataGridViewParameterList.DataSource = this.parameterDictionaryBindingSource;
             this.dataGridViewParameterList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewParameterList.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewParameterList.Name = "dataGridViewParameterList";
             this.dataGridViewParameterList.RowTemplate.Height = 30;
             this.dataGridViewParameterList.Size = new System.Drawing.Size(378, 544);
             this.dataGridViewParameterList.TabIndex = 0;
-            // 
-            // parameterDictionaryBindingSource
-            // 
-            this.parameterDictionaryBindingSource.DataSource = typeof(Scottxu.WebServiceDataProvider.Demo.ParameterDictionary);
-            // 
-            // keysDataGridViewTextBoxColumn
-            // 
-            this.keysDataGridViewTextBoxColumn.DataPropertyName = "Keys";
-            this.keysDataGridViewTextBoxColumn.HeaderText = "键";
-            this.keysDataGridViewTextBoxColumn.Name = "keysDataGridViewTextBoxColumn";
-            this.keysDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // valuesDataGridViewTextBoxColumn
-            // 
-            this.valuesDataGridViewTextBoxColumn.DataPropertyName = "Values";
-            this.valuesDataGridViewTextBoxColumn.HeaderText = "值";
-            this.valuesDataGridViewTextBoxColumn.Name = "valuesDataGridViewTextBoxColumn";
-            this.valuesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewParameterList.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewParameterList_CellValueChanged);
+            this.dataGridViewParameterList.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridViewParameterList_DataError);
             // 
             // FormParameterList
             // 
@@ -78,8 +52,8 @@
             this.Controls.Add(this.dataGridViewParameterList);
             this.Name = "FormParameterList";
             this.Text = "参数列表";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormParameterList_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParameterList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.parameterDictionaryBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -87,8 +61,5 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewParameterList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn keysDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valuesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource parameterDictionaryBindingSource;
     }
 }

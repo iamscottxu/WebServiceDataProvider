@@ -17,9 +17,6 @@ namespace Scottxu.WebServiceDataProvider
         //WebServiceObject对象
         private readonly object _webServiceObject;
 
-        //参数列表
-        private readonly SortedDictionary<string, string> _parameters;
-
         //参数值列表
         private readonly object[] _parameterValues;
 
@@ -28,8 +25,8 @@ namespace Scottxu.WebServiceDataProvider
         /// </summary>
         public object this[string parameterName]
         {
-            get => this[_parameters.Keys.ToList().FindIndex(p => p == parameterName)];
-            set => this[_parameters.Keys.ToList().FindIndex(p => p == parameterName)] = value;
+            get => this[_methodInfo.GetParameters().ToList().FindIndex(p => p.Name == parameterName)];
+            set => this[_methodInfo.GetParameters().ToList().FindIndex(p => p.Name == parameterName)] = value;
         }
 
         /// <summary>
@@ -44,7 +41,7 @@ namespace Scottxu.WebServiceDataProvider
                 if (value.GetType() != _methodInfo.GetParameters()[index].ParameterType)
                     throw new ArgumentException(
                         string.Format(Properties.Resources.ArgumentExceptionArgumentTypeErrorText,
-                            _parameters.Keys.ToList()[index],
+                            _methodInfo.GetParameters()[index],
                             _methodInfo.GetParameters()[index].ParameterType,
                             value.GetType())
                         );
@@ -95,8 +92,7 @@ namespace Scottxu.WebServiceDataProvider
             _methodInfo = type.GetMethod(method);
 
             //获取参数列表
-            _parameters = Connection.GetMethodParameterList(_class, method);
-            _parameterValues = new object[_parameters.Count];
+            _parameterValues = _methodInfo != null ? new object[_methodInfo.GetParameters().Length] : new object[0];
         }
 
         /// <summary>

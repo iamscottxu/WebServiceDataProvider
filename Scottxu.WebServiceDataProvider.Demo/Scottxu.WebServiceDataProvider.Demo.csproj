@@ -58,6 +58,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,11 +76,11 @@
     <Compile Include="FormDemo.Designer.cs">
       <DependentUpon>FormDemo.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormParameterList.cs">
+    <Compile Include="FormCodeParameterList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormParameterList.Designer.cs">
-      <DependentUpon>FormParameterList.cs</DependentUpon>
+    <Compile Include="FormCodeParameterList.Designer.cs">
+      <DependentUpon>FormCodeParameterList.cs</DependentUpon>
     </Compile>
     <Compile Include="FromErrorList.cs">
       <SubType>Form</SubType>
@@ -87,14 +88,16 @@
     <Compile Include="FromErrorList.Designer.cs">
       <DependentUpon>FromErrorList.cs</DependentUpon>
     </Compile>
-    <Compile Include="ParameterDictionary.cs" />
+    <Compile Include="CodeParameterKeyValuePairTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormDemo.resx">
       <DependentUpon>FormDemo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormParameterList.resx">
-      <DependentUpon>FormParameterList.cs</DependentUpon>
+    <EmbeddedResource Include="FormCodeParameterList.resx">
+      <DependentUpon>FormCodeParameterList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FromErrorList.resx">
       <DependentUpon>FromErrorList.cs</DependentUpon>
@@ -109,7 +112,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\ParameterDictionary.datasource" />
     <None Include="Properties\DataSources\Scottxu.WebServiceDataProvider.CommandBase.datasource" />
     <None Include="Properties\DataSources\Scottxu.WebServiceDataProvider.Connection.datasource" />
     <None Include="Properties\DataSources\Scottxu.WebServiceDataProvider.CSharpCodeCommand.datasource" />

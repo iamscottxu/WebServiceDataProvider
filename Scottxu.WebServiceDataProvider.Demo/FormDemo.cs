@@ -16,7 +16,7 @@ namespace Scottxu.WebServiceDataProvider.Demo
     {
         private readonly Connection _connection;
         private CompilerErrorCollection _compilerErrors;
-        private ParameterDictionary _parameterDictionary;
+        private readonly Dictionary<string, object> _parameterDictionary;
         private object _queryResult;
         public FormDemo()
         {
@@ -25,7 +25,7 @@ namespace Scottxu.WebServiceDataProvider.Demo
             textEditorControlCodeCode.Encoding = Encoding.UTF8;
             _connection = new Connection("http://", false);
             connectionBindingSource.DataSource = _connection;
-            _parameterDictionary = new ParameterDictionary();
+            _parameterDictionary = new Dictionary<string, object>();
         }
 
         private void buttonCodeQuery_Click(object sender, EventArgs e)
@@ -47,16 +47,23 @@ namespace Scottxu.WebServiceDataProvider.Demo
             }
         }
 
-        private void buttonCodeErrorList_Click(object sender, EventArgs e)
+        private void buttonErrorList_Click(object sender, EventArgs e)
         {
             var fromErrorList = new FromErrorList(_compilerErrors);
             fromErrorList.ShowDialog();
         }
 
+
+        private void buttonResult_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void buttonCodeParameters_Click(object sender, EventArgs e)
         {
-            var formParameterList = new FormParameterList(_parameterDictionary);
+            var formParameterList = new FormCodeParameterList(_parameterDictionary);
             formParameterList.ShowDialog();
         }
+
     }
 }
