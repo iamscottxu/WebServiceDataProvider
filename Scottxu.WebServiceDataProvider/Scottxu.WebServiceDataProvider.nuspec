@@ -6,7 +6,7 @@
     <id>Scottxu.WebServiceDataProvider</id>
 
     <!-- 解析依赖项时使用的包版本号 -->
-    <version>2018.4.0</version>
+    <version>2018.4.1</version>
 
     <summary>一个用于动态调用WebService的C#类库</summary>
 
