@@ -41,7 +41,7 @@ namespace Scottxu.WebServiceDataProvider
                 if (value.GetType() != _methodInfo.GetParameters()[index].ParameterType)
                     throw new ArgumentException(
                         string.Format(Properties.Resources.ArgumentExceptionArgumentTypeErrorText,
-                            _methodInfo.GetParameters()[index],
+                            _methodInfo.GetParameters()[index].Name,
                             _methodInfo.GetParameters()[index].ParameterType,
                             value.GetType())
                         );
